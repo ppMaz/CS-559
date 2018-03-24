@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2018 by anonymous (http://jsbin.com/wizizidavu/7/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2018 by anonymous (http://jsbin.com/mebacifofu/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2018 by anonymous (http://jsbin.com/mebisiwolo/5/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2018 by anonymous (http://jsbin.com/fadavecube/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<body>
+    <canvas id="myCanvas" width="4000" height="300"></canvas>
+	<br/> 
+	Speed of Rolling:<input id="slider1" type="range" min="0" max="10" />
+    <br/>
+    Speed of Small ball:<input id="slider2" type="range" min="0" max="3" />
+
+<script id="jsbin-javascript">
+function setup() { "use strict";
+  var canvas = document.getElementById('myCanvas');
+  var x = 50;
+  var rotation1 = 0;
+  var rotation2 = 0;
+  var rotation3 = 0;
+  var rotation4 = 0;
+  function draw() {
+    var context = canvas.getContext('2d');
+    canvas.width = canvas.width;
+    // use the sliders to get the angles
+    var acc = slider1.value*0.05
+    var acc2 = slider2.value*0.05
+    
+    // note that this only changes the y
+    // X just stays the same
+    // the coordinate systems will move
+    function Tri(color) {
+      context.beginPath();
+      context.fillStyle = color;
+      context.moveTo(50,0);
+      context.lineTo(0,50);
+      context.lineTo(100,50);
+      context.closePath();
+      //context.fill();
+      context.strokeStyle = color;
+      context.stroke()
+    }
+    
+    function Circle(color) {
+      context.beginPath();
+      context.arc(50, 0, 40, 0, 2 * Math.PI, false);
+      context.lineWidth = 3;
+      context.strokeStyle = color;
+      context.stroke();
+    }
+    
+    function Line(color) {
+      context.beginPath();
+      context.moveTo(0,0);
+      context.lineTo(0,80);
+      context.lineWidth = 2;
+      context.strokeStyle = color;
+      context.stroke();
+    }
+    
+    function Hamster(){
+      var img = new Image();
+      img.src = "https://orig00.deviantart.net/c4d3/f/2010/306/0/2/running_mouse_by_flamingzigzag-d320t93.gif";
+      context.drawImage(img,-80,20,75,75);     
+    }
+    
+    function SmallCircle (color){
+      context.beginPath();
+      context.arc(100, 0, 5, 0, 2 * Math.PI, false);
+      context.lineWidth = 3;
+      context.strokeStyle = color;
+      context.stroke();
+    }
+    
+    function SmallCircle2 (color){
+      context.beginPath();
+      context.arc(10, 0, 5, 0, 2 * Math.PI, false);
+      context.lineWidth = 3;
+      context.strokeStyle = color;
+      context.stroke();
+    }
+    
+
+    
+    // make sure you understand these
+    //context.rotate(rotation);
+    //Head();
+    //Body();
+    //Hamster();
+    context.translate(100,145);
+    context.save();
+    context.scale(1,2);
+    Tri("blue");
+    context.restore();
+    context.translate(-50,-5);
+    context.save();
+    //context.rotate();
+    context.scale(2,2);
+    Circle("green");
+    context.save();
+    context.restore();
+    context.restore();
+    context.restore();
+    context.translate(100,0)
+    context.save();
+    context.rotate(rotation1);
+    Line("black");
+    //context.save();
+    //context.restore();
+    //context.rotate(rotation2);
+    context.rotate(Math.PI / 4);
+    Line("black");
+    context.rotate(Math.PI / 4);
+    Line("black");
+    context.rotate(Math.PI / 4);
+    Line("black");
+    context.rotate(Math.PI / 4);
+    Line("black");
+    context.rotate(Math.PI / 4);
+    Line("black");
+    context.rotate(Math.PI / 4);
+    Line("black");
+    context.rotate(Math.PI / 4);
+    Line("black");
+    context.restore();
+    context.save();
+    context.rotate(rotation2);
+    Hamster();
+
+    //Moving();
+    context.restore();
+    context.restore();
+    context.save();
+    context.translate(0,0);
+    context.rotate(rotation3);
+    //SmallCircle("red");
+    context.translate(100,10);
+    context.rotate(rotation4);
+    SmallCircle2("red");
+    context.rotate(Math.PI / 2);
+    SmallCircle2("purple");
+    context.rotate(Math.PI / 2);
+    SmallCircle2("pink");
+    context.rotate(Math.PI / 2);
+    SmallCircle2("salmon");
+    context.rotate(Math.PI / 2);
+    context.restore();
+      
+  
+
+    rotation1 += acc;
+    rotation3 -= acc2;
+    rotation4 += 0.1;
+    if (acc2 ==0) {
+      rotation4 = 0;
+    }
+    if (rotation2 >= - Math.PI / 5){
+    rotation2 -= 0.01;
+    }else if (acc ==0 ){
+      rotation2 += 0;
+    }else{
+    rotation2 +=0.2 - acc*0.3;
+    }
+    window.requestAnimationFrame(draw);
+    //context.translate(-100,-100);
+    //Hamster();
+  }
+                     // Hamster();
+     //slider1.addEventListener("input",draw);
+     window.requestAnimationFrame(draw);
+
+
+}
+window.onload = setup;
+  
+</script>
+</body>
+<head>
+  <meta name="description" content="E3b - Working Slider - Better Code">
+  <meta charset="utf-8">
+  <title>Slider Example Better Code</title>
+</head>
+</html>
